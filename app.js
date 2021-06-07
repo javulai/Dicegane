@@ -1,5 +1,5 @@
 // toglogchiin eeljiig hadgalah huwisagch, negdugeer toglogchiig 0, hoyrdugaar toglogchiig 1
-var activePlayer = 1;
+var activePlayer = 0;
 
 // toglogchiin tsugluulah onoog hadgalah huwisagch
 var scores = [0, 0];
@@ -23,4 +23,23 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     var diceNumber = Math.floor(Math.random() * 6 + 1);
     diceDom.style.display = 'block';
     diceDom.src = 'dice-' + diceNumber + '.png';
+
+    //buusan toog 1-s uur bol idevhtei toglogchiin onoog nemegduulne.
+    if (diceNumber !== 1) {
+        roundScore += diceNumber;
+        document.getElementById('current-' + activePlayer).textContent = roundScore;
+    } else {
+        // ene toglogchiin current onoog 0 bolgono
+        document.getElementById('current-' + activePlayer).textContent = 0;
+        roundScore = 0;
+        activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+        // 1 buusan bol toglogchiin eeljiig solij ugnu
+
+        // active tseg arilgana
+        document.querySelector('.player-0-panel').classList.toggle('active');
+        document.querySelector('.player-1-panel').classList.toggle('active');
+        diceDom.style.display = 'none';
+        // if(activePlayer === 0) activePlayer = 1;
+        // else activePlayer = 0;
+    }
 })
