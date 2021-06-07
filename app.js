@@ -18,6 +18,7 @@ document.getElementById('current-1').textContent = 0;
 var diceDom = document.querySelector('.dice')
 diceDom.style.display = 'none';
 
+// roll dice eventlistener
 document.querySelector('.btn-roll').addEventListener('click', function () {
     var diceNumber = Math.floor(Math.random() * 6 + 1);
     diceDom.style.display = 'block';
